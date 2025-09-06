@@ -162,4 +162,18 @@ wandb/
 
 # Cython debug symbols
 cython_debug/
+my_pytorch_env*
+# Dev scripts
+.dev/
+
+# Data folders
+data/
+outputs/
+
+# Translations
+*.mo
+*.pot
+
+# Dev folders
+.cache/*
 my_pytorch_env/*
