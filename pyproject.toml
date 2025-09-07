@@ -75,6 +75,7 @@ dependencies = [
     "zarr>=2.17.0",
     "pyserial>=3.5",
     "serial>=0.0.97",
+    "ipykernel>=6.30.1",
 ]
 
 [project.optional-dependencies]
