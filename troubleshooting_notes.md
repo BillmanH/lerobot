@@ -2,6 +2,8 @@
 
 
 RuntimeError:  [RxPacketError] Input voltage error!
+I found this out that one of the servos was the wrong kind. So the serial loading process doesn't work. 
+
 ### Servos:
 | Left port | Right port |
 |------------|-----------|
