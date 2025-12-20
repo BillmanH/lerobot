@@ -12,8 +12,8 @@ pyserial>=3.5
 opencv-python>=4.8.0
 
 # Motor control
-SCServo_Python>=1.0.0  # Feetech motors (STS3215, etc.)
-dynamixel-sdk>=3.7.0   # Dynamixel motors
+feetech-servo-sdk==1.0.0  # Feetech motors (STS3215, etc.) - correct package
+dynamixel-sdk>=3.7.0      # Dynamixel motors
 
 # USB communication
 pyusb>=1.2.1

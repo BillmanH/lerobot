@@ -22,7 +22,7 @@ dependencies = [
 # Edge-only dependencies (robot control without ML)
 edge = [
     "opencv-python",
-    "SCServo_Python",  # Feetech motors
+    "feetech-servo-sdk==1.0.0",  # Feetech motors (correct package)
     "dynamixel-sdk",   # Dynamixel motors
     "pyusb",
     "av",             # Video encoding
