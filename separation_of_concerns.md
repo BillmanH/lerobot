@@ -129,6 +129,8 @@ lerobot-edge/
 - numpy (for basic array operations)
 - opencv-python (camera capture)
 - pyserial (motor communication)
+- scservo_sdk or SCServo_Python (Feetech motor control - unofficial PyPI package)
+- dynamixel-sdk (Dynamixel motor control, if needed)
 - pyyaml (configuration)
 - pyusb (USB device access)
 - draccus (configuration management)
@@ -770,6 +772,8 @@ dependencies = [
     "numpy>=1.24.0",
     "opencv-python>=4.8.0",
     "pyserial>=3.5",
+    "SCServo_Python>=1.0.0",   # Feetech motors (unofficial PyPI package)
+    "dynamixel-sdk>=3.7.0",    # Dynamixel motors (optional)
     "pyyaml>=6.0",
     "draccus>=0.7.0",
 ]
