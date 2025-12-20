@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Add the src directory to Python path
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+
 from lerobot.robots.so101_follower import SO101Follower, SO101FollowerConfig
 
 import yaml
