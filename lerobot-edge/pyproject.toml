@@ -20,6 +20,7 @@ dependencies = [
     "draccus>=0.7.0",
     "pyusb>=1.2.1",
     "av>=10.0.0",
+    "deepdiff>=6.0.0",
 ]
 
 [project.urls]
