@@ -1,0 +1,94 @@
+[project]
+name = "lerobot"
+version = "2.0.0"
+description = "🤗 LeRobot: Making AI for Robotics more accessible with end-to-end learning"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Hugging Face", email = "lerobot@huggingface.co"}
+]
+keywords = ["robotics", "machine learning", "deep learning", "imitation learning"]
+
+# Core dependencies (minimal for basic functionality)
+dependencies = [
+    "numpy>=1.24.0",
+    "pyyaml>=6.0",
+    "draccus>=0.7.0",
+    "pyserial>=3.5",
+]
+
+[project.optional-dependencies]
+# Edge-only dependencies (robot control without ML)
+edge = [
+    "opencv-python>=4.8.0",
+    "SCServo_Python>=1.0.0",  # Feetech motors
+    "dynamixel-sdk>=3.7.0",   # Dynamixel motors
+    "pyusb>=1.2.1",
+    "av>=10.0.0",             # Video encoding
+]
+
+# Full ML/training dependencies
+all = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "transformers>=4.30.0",
+    "datasets>=2.13.0",
+    "huggingface-hub>=0.15.0",
+    "accelerate>=0.20.0",
+    "wandb>=0.15.0",
+    "gym>=0.26.0",
+    "gymnasium>=0.28.0",
+    "opencv-python>=4.8.0",
+    "av>=10.0.0",
+    "pyserial>=3.5",
+    "SCServo_Python>=1.0.0",
+    "dynamixel-sdk>=3.7.0",
+    "pyusb>=1.2.1",
+    "matplotlib>=3.7.0",
+    "pillow>=9.0.0",
+    "tqdm>=4.65.0",
+    "pandas>=2.0.0",
+    "safetensors>=0.3.0",
+    "einops>=0.6.0",
+    "pytest>=7.3.0",
+    "pytest-cov>=4.1.0",
+]
+
+# Development dependencies
+dev = [
+    "pytest>=7.3.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/huggingface/lerobot"
+Documentation = "https://github.com/huggingface/lerobot"
+Repository = "https://github.com/huggingface/lerobot"
+Issues = "https://github.com/huggingface/lerobot/issues"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = {find = {where = ["src"]}}
+
+[tool.setuptools.package-data]
+lerobot = ["templates/*.md", "datasets/*.md"]
+
+[tool.ruff]
+line-length = 119
+target-version = "py310"
+
+[tool.black]
+line-length = 119
+target-version = ['py310']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

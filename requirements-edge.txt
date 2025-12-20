@@ -1,0 +1,25 @@
+# Edge-only requirements for robot control (no ML/training dependencies)
+# Install with: pip install -r requirements-edge.txt
+# Or with UV: uv pip install -r requirements-edge.txt
+
+# Core dependencies
+numpy>=1.24.0
+pyyaml>=6.0
+draccus>=0.7.0
+pyserial>=3.5
+
+# Camera capture
+opencv-python>=4.8.0
+
+# Motor control
+SCServo_Python>=1.0.0  # Feetech motors (STS3215, etc.)
+dynamixel-sdk>=3.7.0   # Dynamixel motors
+
+# USB communication
+pyusb>=1.2.1
+
+# Video encoding (for recording)
+av>=10.0.0
+
+# Note: This minimal set allows robot control, teleoperation, and data collection
+# For training and ML features, use requirements-ubuntu.txt or requirements-macos.txt
