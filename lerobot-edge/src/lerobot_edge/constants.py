@@ -15,7 +15,8 @@
 import os
 from pathlib import Path
 
-from huggingface_hub.constants import HF_HOME
+# For edge devices, use simple local cache instead of HuggingFace Hub
+HF_HOME = Path.home() / ".cache" / "huggingface"
 
 OBS_ENV_STATE = "observation.environment_state"
 OBS_STATE = "observation.state"
