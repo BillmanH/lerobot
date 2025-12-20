@@ -21,11 +21,11 @@ dependencies = [
 [project.optional-dependencies]
 # Edge-only dependencies (robot control without ML)
 edge = [
-    "opencv-python>=4.8.0",
-    "SCServo_Python>=1.0.0",  # Feetech motors
-    "dynamixel-sdk>=3.7.0",   # Dynamixel motors
-    "pyusb>=1.2.1",
-    "av>=10.0.0",             # Video encoding
+    "opencv-python",
+    "SCServo_Python",  # Feetech motors
+    "dynamixel-sdk",   # Dynamixel motors
+    "pyusb",
+    "av",             # Video encoding
 ]
 
 # Full ML/training dependencies
