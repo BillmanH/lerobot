@@ -118,3 +118,4 @@ class Camera(abc.ABC):
     def disconnect(self) -> None:
         """Disconnect from the camera and release resources."""
         pass
+

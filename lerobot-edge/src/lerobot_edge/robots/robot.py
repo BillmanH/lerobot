@@ -19,8 +19,8 @@ from typing import Any
 
 import draccus
 
-from lerobot.constants import HF_LEROBOT_CALIBRATION, ROBOTS
-from lerobot.motors import MotorCalibration
+from lerobot_edge.constants import HF_LEROBOT_CALIBRATION, ROBOTS
+from lerobot_edge.motors import MotorCalibration
 
 from .config import RobotConfig
 
@@ -183,3 +183,4 @@ class Robot(abc.ABC):
     def disconnect(self) -> None:
         """Disconnect from the robot and perform any necessary cleanup."""
         pass
+

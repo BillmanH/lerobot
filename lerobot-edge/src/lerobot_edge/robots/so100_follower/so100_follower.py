@@ -19,10 +19,10 @@ import time
 from functools import cached_property
 from typing import Any
 
-from lerobot.cameras.utils import make_cameras_from_configs
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
-from lerobot.motors import Motor, MotorCalibration, MotorNormMode
-from lerobot.motors.feetech import (
+from lerobot_edge.cameras.utils import make_cameras_from_configs
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.motors import Motor, MotorCalibration, MotorNormMode
+from lerobot_edge.motors.feetech import (
     FeetechMotorsBus,
     OperatingMode,
 )
@@ -230,3 +230,4 @@ class SO100Follower(Robot):
             cam.disconnect()
 
         logger.info(f"{self} disconnected.")
+

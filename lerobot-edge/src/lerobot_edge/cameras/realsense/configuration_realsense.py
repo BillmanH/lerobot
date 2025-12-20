@@ -80,3 +80,4 @@ class RealSenseCameraConfig(CameraConfig):
             raise ValueError(
                 "For `fps`, `width` and `height`, either all of them need to be set, or none of them."
             )
+

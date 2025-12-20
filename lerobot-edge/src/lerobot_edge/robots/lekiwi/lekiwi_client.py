@@ -23,7 +23,7 @@ from typing import Any
 import cv2
 import numpy as np
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
 
 from ..robot import Robot
 from .config_lekiwi import LeKiwiClientConfig
@@ -343,3 +343,4 @@ class LeKiwiClient(Robot):
         self.zmq_cmd_socket.close()
         self.zmq_context.term()
         self._is_connected = False
+

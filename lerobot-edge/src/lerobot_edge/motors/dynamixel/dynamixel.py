@@ -22,7 +22,7 @@ import logging
 from copy import deepcopy
 from enum import Enum
 
-from lerobot.utils.encoding_utils import decode_twos_complement, encode_twos_complement
+from lerobot_edge.utils.encoding_utils import decode_twos_complement, encode_twos_complement
 
 from ..motors_bus import Motor, MotorCalibration, MotorsBus, NameOrID, Value, get_address
 from .tables import (
@@ -262,3 +262,4 @@ class DynamixelMotorsBus(MotorsBus):
             return
 
         return {id_: data[0] for id_, data in data_list.items()}
+

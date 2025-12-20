@@ -16,7 +16,7 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras import CameraConfig
+from lerobot_edge.cameras import CameraConfig
 
 from ..config import RobotConfig
 
@@ -39,3 +39,4 @@ class SO101FollowerConfig(RobotConfig):
 
     # Set to `True` for backward compatibility with previous policies/dataset
     use_degrees: bool = False
+

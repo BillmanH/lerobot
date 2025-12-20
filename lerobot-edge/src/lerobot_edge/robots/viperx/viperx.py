@@ -17,11 +17,11 @@ import time
 from functools import cached_property
 from typing import Any
 
-from lerobot.cameras.utils import make_cameras_from_configs
-from lerobot.constants import OBS_STATE
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
-from lerobot.motors import Motor, MotorCalibration, MotorNormMode
-from lerobot.motors.dynamixel import (
+from lerobot_edge.cameras.utils import make_cameras_from_configs
+from lerobot_edge.constants import OBS_STATE
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.motors import Motor, MotorCalibration, MotorNormMode
+from lerobot_edge.motors.dynamixel import (
     DynamixelMotorsBus,
     OperatingMode,
 )
@@ -231,3 +231,4 @@ class ViperX(Robot):
             cam.disconnect()
 
         logger.info(f"{self} disconnected.")
+

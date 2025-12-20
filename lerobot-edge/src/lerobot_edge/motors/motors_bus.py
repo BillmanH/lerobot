@@ -32,8 +32,8 @@ import serial
 from deepdiff import DeepDiff
 from tqdm import tqdm
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
-from lerobot.utils.utils import enter_pressed, move_cursor_up
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.utils.utils import enter_pressed, move_cursor_up
 
 NameOrID: TypeAlias = str | int
 Value: TypeAlias = int | float
@@ -1218,3 +1218,4 @@ class MotorsBus(abc.ABC):
         for id_, value in ids_values.items():
             data = self._serialize_data(value, length)
             self.sync_writer.addParam(id_, data)
+

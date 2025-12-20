@@ -19,8 +19,8 @@ from typing import Any
 
 import draccus
 
-from lerobot.constants import HF_LEROBOT_CALIBRATION, TELEOPERATORS
-from lerobot.motors.motors_bus import MotorCalibration
+from lerobot_edge.constants import HF_LEROBOT_CALIBRATION, TELEOPERATORS
+from lerobot_edge.motors.motors_bus import MotorCalibration
 
 from .config import TeleoperatorConfig
 
@@ -179,3 +179,4 @@ class Teleoperator(abc.ABC):
     def disconnect(self) -> None:
         """Disconnect from the teleoperator and perform any necessary cleanup."""
         pass
+

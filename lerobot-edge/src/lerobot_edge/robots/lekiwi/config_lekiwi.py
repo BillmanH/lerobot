@@ -14,8 +14,8 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras.configs import CameraConfig, Cv2Rotation
-from lerobot.cameras.opencv.configuration_opencv import OpenCVCameraConfig
+from lerobot_edge.cameras.configs import CameraConfig, Cv2Rotation
+from lerobot_edge.cameras.opencv.configuration_opencv import OpenCVCameraConfig
 
 from ..config import RobotConfig
 
@@ -94,3 +94,4 @@ class LeKiwiClientConfig(RobotConfig):
 
     polling_timeout_ms: int = 15
     connect_timeout_s: int = 5
+

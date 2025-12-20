@@ -16,7 +16,7 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras import CameraConfig
+from lerobot_edge.cameras import CameraConfig
 
 from ..config import RobotConfig
 
@@ -49,3 +49,4 @@ class HopeJrArmConfig(RobotConfig):
     max_relative_target: float | dict[str, float] | None = None
 
     cameras: dict[str, CameraConfig] = field(default_factory=dict)
+

@@ -18,7 +18,7 @@ from dataclasses import dataclass
 
 os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
 
-from lerobot.motors import MotorCalibration, MotorsBus
+from lerobot_edge.motors import MotorCalibration, MotorsBus
 
 BAR_LEN, BAR_THICKNESS = 450, 8
 HANDLE_R = 10
@@ -399,3 +399,4 @@ class RangeFinderGUI:
 
             pygame.display.flip()
             self.clock.tick(FPS)
+

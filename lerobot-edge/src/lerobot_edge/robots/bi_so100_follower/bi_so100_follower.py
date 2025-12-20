@@ -19,9 +19,9 @@ import time
 from functools import cached_property
 from typing import Any
 
-from lerobot.cameras.utils import make_cameras_from_configs
-from lerobot.robots.so100_follower import SO100Follower
-from lerobot.robots.so100_follower.config_so100_follower import SO100FollowerConfig
+from lerobot_edge.cameras.utils import make_cameras_from_configs
+from lerobot_edge.robots.so100_follower import SO100Follower
+from lerobot_edge.robots.so100_follower.config_so100_follower import SO100FollowerConfig
 
 from ..robot import Robot
 from .config_bi_so100_follower import BiSO100FollowerConfig
@@ -161,3 +161,4 @@ class BiSO100Follower(Robot):
 
         for cam in self.cameras.values():
             cam.disconnect()
+

@@ -26,3 +26,4 @@ class SO101LeaderConfig(TeleoperatorConfig):
     port: str
 
     use_degrees: bool = False
+

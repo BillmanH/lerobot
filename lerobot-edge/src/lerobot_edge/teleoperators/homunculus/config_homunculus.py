@@ -36,3 +36,4 @@ class HomunculusGloveConfig(TeleoperatorConfig):
 class HomunculusArmConfig(TeleoperatorConfig):
     port: str  # Port to connect to the arm
     baud_rate: int = 115_200
+

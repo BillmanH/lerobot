@@ -71,3 +71,4 @@ def make_teleoperator_from_config(config: TeleoperatorConfig) -> Teleoperator:
         return Reachy2Teleoperator(config)
     else:
         raise ValueError(config.type)
+

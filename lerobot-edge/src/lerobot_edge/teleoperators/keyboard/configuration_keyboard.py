@@ -30,3 +30,4 @@ class KeyboardTeleopConfig(TeleoperatorConfig):
 @dataclass
 class KeyboardEndEffectorTeleopConfig(KeyboardTeleopConfig):
     use_gripper: bool = True
+

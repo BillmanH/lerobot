@@ -478,3 +478,4 @@ class GamepadControllerHID(InputController):
     def should_save(self):
         """Return True if save button was pressed."""
         return self.save_requested
+

@@ -76,3 +76,4 @@ class Reachy2CameraConfig(CameraConfig):
             raise ValueError(
                 f"`color_mode` is expected to be 'rgb' or 'bgr', but {self.color_mode} is provided."
             )
+

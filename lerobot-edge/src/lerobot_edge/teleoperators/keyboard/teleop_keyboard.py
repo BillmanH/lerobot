@@ -21,7 +21,7 @@ import time
 from queue import Queue
 from typing import Any
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
 
 from ..teleoperator import Teleoperator
 from .configuration_keyboard import KeyboardEndEffectorTeleopConfig, KeyboardTeleopConfig
@@ -235,3 +235,4 @@ class KeyboardEndEffectorTeleop(KeyboardTeleop):
             action_dict["gripper"] = gripper_action
 
         return action_dict
+

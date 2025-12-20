@@ -37,11 +37,11 @@ from typing import Any
 import numpy as np
 from PIL import Image
 
-from lerobot.cameras.configs import ColorMode
-from lerobot.cameras.opencv.camera_opencv import OpenCVCamera
-from lerobot.cameras.opencv.configuration_opencv import OpenCVCameraConfig
-from lerobot.cameras.realsense.camera_realsense import RealSenseCamera
-from lerobot.cameras.realsense.configuration_realsense import RealSenseCameraConfig
+from lerobot_edge.cameras.configs import ColorMode
+from lerobot_edge.cameras.opencv.camera_opencv import OpenCVCamera
+from lerobot_edge.cameras.opencv.configuration_opencv import OpenCVCameraConfig
+from lerobot_edge.cameras.realsense.camera_realsense import RealSenseCamera
+from lerobot_edge.cameras.realsense.configuration_realsense import RealSenseCameraConfig
 
 logger = logging.getLogger(__name__)
 
@@ -317,3 +317,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

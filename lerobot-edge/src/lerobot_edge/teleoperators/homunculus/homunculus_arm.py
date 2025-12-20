@@ -22,9 +22,9 @@ from typing import Deque
 
 import serial
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
-from lerobot.motors.motors_bus import MotorCalibration, MotorNormMode
-from lerobot.utils.utils import enter_pressed, move_cursor_up
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.motors.motors_bus import MotorCalibration, MotorNormMode
+from lerobot_edge.utils.utils import enter_pressed, move_cursor_up
 
 from ..teleoperator import Teleoperator
 from .config_homunculus import HomunculusArmConfig
@@ -308,3 +308,4 @@ class HomunculusArm(Teleoperator):
         self.thread.join(timeout=1)
         self.serial.close()
         logger.info(f"{self} disconnected.")
+

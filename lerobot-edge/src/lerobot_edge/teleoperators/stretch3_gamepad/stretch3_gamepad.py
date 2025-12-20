@@ -20,7 +20,7 @@ import numpy as np
 from stretch_body.gamepad_teleop import GamePadTeleop
 from stretch_body.robot_params import RobotParams
 
-from lerobot.errors import DeviceAlreadyConnectedError
+from lerobot_edge.errors import DeviceAlreadyConnectedError
 
 from ..teleoperator import Teleoperator
 from .configuration_stretch3 import Stretch3GamePadConfig
@@ -119,3 +119,4 @@ class Stretch3GamePad(Teleoperator):
     def disconnect(self) -> None:
         self.api.stop()
         self.is_connected = False
+

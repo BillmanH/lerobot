@@ -162,3 +162,4 @@ class Reachy2Teleoperator(Teleoperator):
     def disconnect(self) -> None:
         if self.reachy and self.is_connected:
             self.reachy.disconnect()
+

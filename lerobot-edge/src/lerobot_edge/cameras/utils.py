@@ -71,3 +71,4 @@ def get_cv2_backend() -> int:
     #     return cv2.CAP_AVFOUNDATION
     else:  # Linux and others
         return cv2.CAP_ANY
+

@@ -31,7 +31,7 @@ if platform.system() == "Windows" and "OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"
 import cv2
 import numpy as np
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
 
 from ..camera import Camera
 from ..utils import get_cv2_backend, get_cv2_rotation
@@ -68,8 +68,8 @@ class OpenCVCamera(Camera):
 
     Example:
         ```python
-        from lerobot.cameras.opencv import OpenCVCamera
-        from lerobot.cameras.configuration_opencv import OpenCVCameraConfig, ColorMode, Cv2Rotation
+        from lerobot_edge.cameras.opencv import OpenCVCamera
+        from lerobot_edge.cameras.configuration_opencv import OpenCVCameraConfig, ColorMode, Cv2Rotation
 
         # Basic usage with camera index 0
         config = OpenCVCameraConfig(index_or_path=0)
@@ -483,3 +483,4 @@ class OpenCVCamera(Camera):
             self.videocapture = None
 
         logger.info(f"{self} disconnected.")
+

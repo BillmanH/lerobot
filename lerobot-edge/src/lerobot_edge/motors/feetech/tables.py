@@ -250,3 +250,4 @@ MODEL_PROTOCOL = {
     "sm8512bl": 0,
     "scs0009": 1,
 }
+

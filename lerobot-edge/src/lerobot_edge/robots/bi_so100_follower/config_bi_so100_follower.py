@@ -16,7 +16,7 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras import CameraConfig
+from lerobot_edge.cameras import CameraConfig
 
 from ..config import RobotConfig
 
@@ -37,3 +37,4 @@ class BiSO100FollowerConfig(RobotConfig):
 
     # cameras (shared between both arms)
     cameras: dict[str, CameraConfig] = field(default_factory=dict)
+

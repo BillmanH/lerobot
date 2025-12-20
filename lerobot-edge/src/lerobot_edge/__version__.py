@@ -21,3 +21,4 @@ try:
     __version__ = version("lerobot")
 except PackageNotFoundError:
     __version__ = "unknown"
+

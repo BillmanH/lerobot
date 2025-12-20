@@ -20,7 +20,7 @@ from typing import Any
 import numpy as np
 from reachy2_sdk import ReachySDK
 
-from lerobot.cameras.utils import make_cameras_from_configs
+from lerobot_edge.cameras.utils import make_cameras_from_configs
 
 from ..robot import Robot
 from ..utils import ensure_safe_goal_position
@@ -228,3 +228,4 @@ class Reachy2Robot(Robot):
             if self.config.disable_torque_on_disconnect:
                 self.reachy.turn_off_smoothly()
             self.reachy.disconnect()
+

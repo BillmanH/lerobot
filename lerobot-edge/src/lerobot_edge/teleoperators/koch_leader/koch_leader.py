@@ -17,9 +17,9 @@
 import logging
 import time
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
-from lerobot.motors import Motor, MotorCalibration, MotorNormMode
-from lerobot.motors.dynamixel import (
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.motors import Motor, MotorCalibration, MotorNormMode
+from lerobot_edge.motors.dynamixel import (
     DriveMode,
     DynamixelMotorsBus,
     OperatingMode,
@@ -182,3 +182,4 @@ class KochLeader(Teleoperator):
 
         self.bus.disconnect()
         logger.info(f"{self} disconnected.")
+

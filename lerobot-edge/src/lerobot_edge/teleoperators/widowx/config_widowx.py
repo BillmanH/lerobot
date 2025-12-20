@@ -23,3 +23,4 @@ from ..config import TeleoperatorConfig
 @dataclass
 class WidowXConfig(TeleoperatorConfig):
     port: str  # Port to connect to the arm
+

@@ -29,7 +29,7 @@ try:
 except Exception as e:
     logging.info(f"Could not import realsense: {e}")
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
 
 from ..camera import Camera
 from ..configs import ColorMode
@@ -63,8 +63,8 @@ class RealSenseCamera(Camera):
 
     Example:
         ```python
-        from lerobot.cameras.realsense import RealSenseCamera, RealSenseCameraConfig
-        from lerobot.cameras import ColorMode, Cv2Rotation
+        from lerobot_edge.cameras.realsense import RealSenseCamera, RealSenseCameraConfig
+        from lerobot_edge.cameras import ColorMode, Cv2Rotation
 
         # Basic usage with serial number
         config = RealSenseCameraConfig(serial_number_or_name="0123456789") # Replace with actual SN
@@ -553,3 +553,4 @@ class RealSenseCamera(Camera):
             self.rs_profile = None
 
         logger.info(f"{self} disconnected.")
+

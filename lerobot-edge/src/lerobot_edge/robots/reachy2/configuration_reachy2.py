@@ -14,9 +14,9 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras import CameraConfig
-from lerobot.cameras.configs import ColorMode
-from lerobot.cameras.reachy2_camera import Reachy2CameraConfig
+from lerobot_edge.cameras import CameraConfig
+from lerobot_edge.cameras.configs import ColorMode
+from lerobot_edge.cameras.reachy2_camera import Reachy2CameraConfig
 
 from ..config import RobotConfig
 
@@ -105,3 +105,4 @@ class Reachy2RobotConfig(RobotConfig):
                 "At least one part of the robot must be set to True "
                 "(with_mobile_base, with_l_arm, with_r_arm, with_neck, with_antennas)"
             )
+

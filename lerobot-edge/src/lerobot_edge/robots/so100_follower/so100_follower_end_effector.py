@@ -20,11 +20,11 @@ from typing import Any
 
 import numpy as np
 
-from lerobot.cameras import make_cameras_from_configs
-from lerobot.errors import DeviceNotConnectedError
-from lerobot.model.kinematics import RobotKinematics
-from lerobot.motors import Motor, MotorNormMode
-from lerobot.motors.feetech import FeetechMotorsBus
+from lerobot_edge.cameras import make_cameras_from_configs
+from lerobot_edge.errors import DeviceNotConnectedError
+from lerobot_edge.model.kinematics import RobotKinematics
+from lerobot_edge.motors import Motor, MotorNormMode
+from lerobot_edge.motors.feetech import FeetechMotorsBus
 
 from . import SO100Follower
 from .config_so100_follower import SO100FollowerEndEffectorConfig
@@ -198,3 +198,4 @@ class SO100FollowerEndEffector(SO100Follower):
     def reset(self):
         self.current_ee_pos = None
         self.current_joint_pos = None
+

@@ -61,3 +61,4 @@ def homunculus_glove_to_hope_jr_hand(glove_action: dict[str, float]) -> dict[str
         ),
         "pinky_pip_dip.pos": glove_action["pinky_dip.pos"],
     }
+

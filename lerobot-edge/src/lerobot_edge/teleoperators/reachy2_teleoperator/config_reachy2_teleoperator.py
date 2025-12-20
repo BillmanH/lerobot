@@ -49,3 +49,4 @@ class Reachy2TeleoperatorConfig(TeleoperatorConfig):
                 "At least one part of the robot must be set to True "
                 "(with_mobile_base, with_l_arm, with_r_arm, with_neck, with_antennas)"
             )
+

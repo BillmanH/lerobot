@@ -15,7 +15,7 @@
 import logging
 from pprint import pformat
 
-from lerobot.robots import RobotConfig
+from lerobot_edge.robots import RobotConfig
 
 from .robot import Robot
 
@@ -109,3 +109,4 @@ def ensure_safe_goal_position(
         )
 
     return safe_goal_positions
+

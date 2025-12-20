@@ -16,7 +16,7 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras import CameraConfig
+from lerobot_edge.cameras import CameraConfig
 
 from ..config import RobotConfig
 
@@ -71,3 +71,4 @@ class SO100FollowerEndEffectorConfig(SO100FollowerConfig):
             "z": 0.02,
         }
     )
+

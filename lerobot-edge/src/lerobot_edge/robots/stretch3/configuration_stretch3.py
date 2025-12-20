@@ -14,9 +14,9 @@
 
 from dataclasses import dataclass, field
 
-from lerobot.cameras import CameraConfig
-from lerobot.cameras.opencv import OpenCVCameraConfig
-from lerobot.cameras.realsense import RealSenseCameraConfig
+from lerobot_edge.cameras import CameraConfig
+from lerobot_edge.cameras.opencv import OpenCVCameraConfig
+from lerobot_edge.cameras.realsense import RealSenseCameraConfig
 
 from ..config import RobotConfig
 
@@ -51,3 +51,4 @@ class Stretch3RobotConfig(RobotConfig):
     )
 
     mock: bool = False
+

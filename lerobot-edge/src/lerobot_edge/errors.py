@@ -41,3 +41,4 @@ class InvalidActionError(ValueError):
     ):
         self.message = message
         super().__init__(self.message)
+

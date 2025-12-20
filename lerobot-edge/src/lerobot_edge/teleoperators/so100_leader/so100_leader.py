@@ -17,9 +17,9 @@
 import logging
 import time
 
-from lerobot.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
-from lerobot.motors import Motor, MotorCalibration, MotorNormMode
-from lerobot.motors.feetech import (
+from lerobot_edge.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
+from lerobot_edge.motors import Motor, MotorCalibration, MotorNormMode
+from lerobot_edge.motors.feetech import (
     FeetechMotorsBus,
     OperatingMode,
 )
@@ -157,3 +157,4 @@ class SO100Leader(Teleoperator):
 
         self.bus.disconnect()
         logger.info(f"{self} disconnected.")
+
