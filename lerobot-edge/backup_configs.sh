@@ -217,18 +217,12 @@ echo "Selected drive: $SELECTED_DRIVE"
 echo ""
 
 # Create backup directory on the drive
-BACKUP_DIR="$SELECTED_DRIVE/lerobot_configs_backup"
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-BACKUP_SUBDIR="$BACKUP_DIR/backup_$TIMESTAMP"
+BACKUP_DIR="$SELECTED_DRIVE/lerobot-configs"
 
-echo "Creating backup directory: $BACKUP_SUBDIR"
-mkdir -p "$BACKUP_SUBDIR"
+echo "Saving to: $BACKUP_DIR"
+sudo mkdir -p "$BACKUP_DIR"
 
 # Copy configuration files
-echo ""
-echo "=========================================="
-echo "Backing up configuration files..."
-echo "=========================================="
 echo ""
 
 SUCCESS_COUNT=0
@@ -240,73 +234,44 @@ if [ -n "$FOLLOWER_PATH" ]; then
         echo "  ✓ Follower config backed up: $BACKUP_SUBDIR/$(basename "$FOLLOWER_PATH")"
         SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
     else
-        echo "  ✗ Failed to backup follower config"
+if [ -n "$FOLLOWER_PATH" ]; then
+    echo "Copying $(basename "$FOLLOWER_PATH")..."
+    if sudo cp "$FOLLOWER_PATH" "$BACKUP_DIR/"; then
+        echo "  ✓ Saved"
+        SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+    else
+        echo "  ✗ Failed"
         FAIL_COUNT=$((FAIL_COUNT + 1))
     fi
 fi
 
 if [ -n "$LEADER_PATH" ]; then
-    echo "Copying leader configuration..."
-    if cp "$LEADER_PATH" "$BACKUP_SUBDIR/"; then
-        echo "  ✓ Leader config backed up: $BACKUP_SUBDIR/$(basename "$LEADER_PATH")"
+    echo "Copying $(basename "$LEADER_PATH")..."
+    if sudo cp "$LEADER_PATH" "$BACKUP_DIR/"; then
+        echo "  ✓ Saved"
         SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
     else
-        echo "  ✗ Failed to backup leader config"
+        echo "  ✗ Failed"
         FAIL_COUNT=$((FAIL_COUNT + 1))
     fi
 fi
 
-# Also backup the local_configurations.yaml file
 if [ -f "$SCRIPT_DIR/local_configurations.yaml" ]; then
     echo "Copying local_configurations.yaml..."
-    if cp "$SCRIPT_DIR/local_configurations.yaml" "$BACKUP_SUBDIR/"; then
-        echo "  ✓ Local configurations backed up: $BACKUP_SUBDIR/local_configurations.yaml"
+    if sudo cp "$SCRIPT_DIR/local_configurations.yaml" "$BACKUP_DIR/"; then
+        echo "  ✓ Saved"
         SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
     else
-        echo "  ✗ Failed to backup local_configurations.yaml"
+        echo "  ✗ Failed"
         FAIL_COUNT=$((FAIL_COUNT + 1))
     fi
 fi
 
-# Create a backup info file
-INFO_FILE="$BACKUP_SUBDIR/backup_info.txt"
-{
-    echo "Robot Configuration Backup"
-    echo "=========================="
-    echo "Date: $(date)"
-    echo "Hostname: $(hostname)"
-    echo "User: $USER"
-    echo ""
-    echo "Backed up files:"
-    [ -n "$FOLLOWER_PATH" ] && echo "  - $(basename "$FOLLOWER_PATH") (from $FOLLOWER_PATH)"
-    [ -n "$LEADER_PATH" ] && echo "  - $(basename "$LEADER_PATH") (from $LEADER_PATH)"
-    [ -f "$SCRIPT_DIR/local_configurations.yaml" ] && echo "  - local_configurations.yaml"
-    echo ""
-    echo "Backup location: $BACKUP_SUBDIR"
-} > "$INFO_FILE"
-
 echo ""
-echo "Backup info saved: $INFO_FILE"
-
-echo ""
-echo "=========================================="
-echo "Backup Summary"
-echo "=========================================="
-echo "Successful: $SUCCESS_COUNT file(s)"
-echo "Failed: $FAIL_COUNT file(s)"
-echo ""
-echo "Backup location: $BACKUP_SUBDIR"
-echo ""
-
-# List backed up files
-echo "Backed up files:"
-ls -lh "$BACKUP_SUBDIR"
-echo ""
-
 if [ $FAIL_COUNT -eq 0 ]; then
-    echo "✓ All configurations backed up successfully!"
+    echo "✓ Done! Files saved to: $BACKUP_DIR"
     exit 0
 else
-    echo "⚠ Some files failed to backup. Please check the output above."
+    echo "⚠ Some files failed. Check output above."
     exit 1
 fi
