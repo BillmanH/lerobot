@@ -25,10 +25,11 @@ FOLLOWER_PATH=""
 LEADER_PATH=""
 
 # Search in common calibration directories
+# Note: Follower is a robot, Leader is a teleoperator (different paths)
 SEARCH_DIRS=(
-    "$HOME/.cache/huggingface/lerobot/calibration/robots/so101_follower"
-    "$HOME/.cache/huggingface/lerobot/calibration/robots/so101_leader"
-    "$HOME/.cache/huggingface/lerobot/calibration/teleoperators/so101_leader"
+    "$HOME/.cache/huggingface/lerobot/calibration/robots/so101_follower"      # Follower calibration
+    "$HOME/.cache/huggingface/lerobot/calibration/teleoperators/so101_leader"  # Leader calibration (correct)
+    "$HOME/.cache/huggingface/lerobot/calibration/robots/so101_leader"        # Legacy/incorrect leader location
     "$CACHE_DIR/so101_follower"
     "$CACHE_DIR/so101_leader"
     "$CACHE_DIR"
