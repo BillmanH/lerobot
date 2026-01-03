@@ -29,12 +29,33 @@ leader_config = SO101LeaderConfig(
 follower = SO101Follower(follower_config)
 leader = SO101Leader(leader_config)
 
-# Connect to devices
-print("Connecting to follower...")
-follower.connect(calibrate=False)
+# Connect to devices with error handling
+try:
+    print("Connecting to follower...")
+    follower.connect(calibrate=False)
+    print("✓ Follower connected")
+except Exception as e:
+    print(f"✗ Failed to connect to follower: {e}")
+    print("\nTroubleshooting:")
+    print("1. Check that follower is powered on")
+    print("2. Verify port in local_configurations.yaml")
+    print("3. Run 01_setup_motors_follower.py first")
+    print("4. Try running 05_test_connection.py for diagnostics")
+    sys.exit(1)
 
-print("Connecting to leader...")
-leader.connect(calibrate=False)
+try:
+    print("Connecting to leader...")
+    leader.connect(calibrate=False)
+    print("✓ Leader connected")
+except Exception as e:
+    print(f"✗ Failed to connect to leader: {e}")
+    print("\nTroubleshooting:")
+    print("1. Check that leader is powered on")
+    print("2. Verify port in local_configurations.yaml")
+    print("3. Run 02_setup_motors_leader.py first")
+    print("4. Try running 05_test_connection.py for diagnostics")
+    follower.disconnect()
+    sys.exit(1)
 
 if not follower.is_connected or not leader.is_connected:
     raise ValueError("Failed to connect to follower or leader!")
