@@ -6,7 +6,7 @@
 set -e  # Exit on error
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_FILE="$SCRIPT_DIR/../../local_configurations.yaml"
+CONFIG_FILE="$SCRIPT_DIR/local_configurations.yaml"
 
 echo "=========================================="
 echo "Serial Port Permission Checker & Enabler"
