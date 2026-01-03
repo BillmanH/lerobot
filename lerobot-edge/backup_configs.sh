@@ -131,13 +131,64 @@ fi
 if [ ${#DRIVES[@]} -eq 0 ]; then
     echo "ERROR: No USB or SD drives detected!"
     echo ""
-    echo "Please ensure:"
-    echo "  1. A USB drive or SD card is plugged in"
-    echo "  2. The drive is mounted"
-    echo "  3. You have permissions to access it"
+    echo "Would you like to mount a drive now? (y/n)"
+    read -p "> " mount_choice
+    
+    if [ "$mount_choice" != "y" ] && [ "$mount_choice" != "Y" ]; then
+        echo "Exiting. Please mount a drive and run this script again."
+        exit 1
+    fi
+    
     echo ""
-    echo "You can manually mount a drive and run this script again."
-    exit 1
+    echo "=========================================="
+    echo "Manual Drive Mounting"
+    echo "=========================================="
+    echo ""
+    
+    # List all block devices
+    echo "Available block devices:"
+    lsblk -o NAME,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT
+    echo ""
+    
+    # Prompt for device
+    read -p "Enter the device to mount (e.g., sdb1, sdc1): " device_name
+    
+    # Validate device exists
+    if [ ! -b "/dev/$device_name" ]; then
+        echo "ERROR: Device /dev/$device_name does not exist!"
+        exit 1
+    fi
+    
+    # Create mount point
+    MOUNT_POINT="/mnt/usb_backup_$(date +%s)"
+    echo ""
+    echo "Creating mount point: $MOUNT_POINT"
+    sudo mkdir -p "$MOUNT_POINT"
+    
+    # Detect filesystem type
+    FS_TYPE=$(lsblk -no FSTYPE "/dev/$device_name")
+    echo "Detected filesystem: $FS_TYPE"
+    echo ""
+    
+    # Mount the drive
+    echo "Mounting /dev/$device_name to $MOUNT_POINT..."
+    if [ -n "$FS_TYPE" ]; then
+        sudo mount -t "$FS_TYPE" "/dev/$device_name" "$MOUNT_POINT"
+    else
+        sudo mount "/dev/$device_name" "$MOUNT_POINT"
+    fi
+    
+    if [ $? -eq 0 ]; then
+        echo "✓ Drive mounted successfully!"
+        echo ""
+        # Add the newly mounted drive to our list
+        DRIVES=("$MOUNT_POINT")
+        size=$(df -h "$MOUNT_POINT" | tail -1 | awk '{print $2}')
+        DRIVE_LABELS=("Manually mounted ($size) - $MOUNT_POINT")
+    else
+        echo "✗ Failed to mount drive!"
+        exit 1
+    fi
 fi
 
 # Display available drives
