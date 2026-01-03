@@ -229,12 +229,6 @@ SUCCESS_COUNT=0
 FAIL_COUNT=0
 
 if [ -n "$FOLLOWER_PATH" ]; then
-    echo "Copying follower configuration..."
-    if cp "$FOLLOWER_PATH" "$BACKUP_SUBDIR/"; then
-        echo "  ✓ Follower config backed up: $BACKUP_SUBDIR/$(basename "$FOLLOWER_PATH")"
-        SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
-    else
-if [ -n "$FOLLOWER_PATH" ]; then
     echo "Copying $(basename "$FOLLOWER_PATH")..."
     if sudo cp "$FOLLOWER_PATH" "$BACKUP_DIR/"; then
         echo "  ✓ Saved"
