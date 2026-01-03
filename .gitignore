@@ -177,3 +177,7 @@ outputs/
 # Dev folders
 .cache/*
 my_pytorch_env/*
+
+
+# Larobot config files. Not sensitive but clutter up repos.
+lerobot-edge/configs/*
