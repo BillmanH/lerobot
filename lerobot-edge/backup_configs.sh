@@ -26,6 +26,9 @@ LEADER_PATH=""
 
 # Search in common calibration directories
 SEARCH_DIRS=(
+    "$HOME/.cache/huggingface/lerobot/calibration/robots/so101_follower"
+    "$HOME/.cache/huggingface/lerobot/calibration/robots/so101_leader"
+    "$HOME/.cache/huggingface/lerobot/calibration/teleoperators/so101_leader"
     "$CACHE_DIR/so101_follower"
     "$CACHE_DIR/so101_leader"
     "$CACHE_DIR"
@@ -34,22 +37,33 @@ SEARCH_DIRS=(
 )
 
 echo "Searching for follower configuration ($FOLLOWER_CONFIG)..."
+echo "Search directories:"
 for dir in "${SEARCH_DIRS[@]}"; do
+    echo "  - $dir"
     if [ -f "$dir/$FOLLOWER_CONFIG" ]; then
         FOLLOWER_PATH="$dir/$FOLLOWER_CONFIG"
-        echo "  Found: $FOLLOWER_PATH"
+        echo "  ✓ Found: $FOLLOWER_PATH"
         break
     fi
 done
+if [ -z "$FOLLOWER_PATH" ]; then
+    echo "  ✗ Not found in any search directory"
+fi
+echo ""
 
 echo "Searching for leader configuration ($LEADER_CONFIG)..."
+echo "Search directories:"
 for dir in "${SEARCH_DIRS[@]}"; do
+    echo "  - $dir"
     if [ -f "$dir/$LEADER_CONFIG" ]; then
         LEADER_PATH="$dir/$LEADER_CONFIG"
-        echo "  Found: $LEADER_PATH"
+        echo "  ✓ Found: $LEADER_PATH"
         break
     fi
 done
+if [ -z "$LEADER_PATH" ]; then
+    echo "  ✗ Not found in any search directory"
+fi
 
 echo ""
 
