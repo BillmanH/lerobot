@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lerobot-config
+  namespace: default
+data:
+  local_configurations.yaml: |
+    follower_port: "/dev/ttyACM0"
+    leader_port: "/dev/ttyACM1"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lerobot-calibration
+  namespace: default
+data:
+  # These will be populated by the setup script or manually
+  # Run: kubectl create configmap lerobot-calibration --from-file=../../lerobot-edge/configs/ -n lerobot --dry-run=client -o yaml | kubectl apply -f -
+  my_awesome_follower_arm.json: |
+    {}
+  my_awesome_leader_arm.json: |
+    {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lerobot-telemetry
+  namespace: default
+  labels:
+    app: lerobot-telemetry
+    aio.akri.sh/asset: "true"  # Mark as AKRI discoverable asset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lerobot-telemetry
+  template:
+    metadata:
+      labels:
+        app: lerobot-telemetry
+        aio.akri.sh/asset: "true"
+    spec:
+      # Host network for USB device access
+      hostNetwork: true
+      # Run as privileged for USB device access
+      securityContext:
+        runAsUser: 0
+      containers:
+      - name: lerobot-telemetry
+        image: lerobot-telemetry:latest
+        imagePullPolicy: Never  # Use local image
+        securityContext:
+          privileged: true
+        env:
+        # Robot configuration
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: HF_LEROBOT_CALIBRATION
+          value: "/app/configs"
+        # Listener mode - only read USB signals
+        - name: LISTENER_MODE
+          value: "true"
+        - name: HTTP_PORT
+          value: "8080"
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        volumeMounts:
+        - name: config
+          mountPath: /app/local_configurations.yaml
+          subPath: local_configurations.yaml
+          readOnly: true
+        - name: calibration
+          mountPath: /app/configs
+          readOnly: true
+        # USB device access
+        - name: dev
+          mountPath: /dev
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "512Mi"
+            cpu: "400m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      volumes:
+      - name: config
+        configMap:
+          name: lerobot-config
+      - name: calibration
+        configMap:
+          name: lerobot-calibration
+      - name: dev
+        hostPath:
+          path: /dev
+          type: Directory
+      # Pin to specific node if USB devices are on specific machine
+      nodeSelector:
+        kubernetes.io/hostname: REPLACE_WITH_YOUR_NODE_NAME
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lerobot-telemetry
+  namespace: default
+  labels:
+    app: lerobot-telemetry
+spec:
+  selector:
+    app: lerobot-telemetry
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  type: ClusterIP

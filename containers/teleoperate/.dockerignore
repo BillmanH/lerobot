@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!README.md
+
+# Tests
+tests/
+test_*.py
+
+# Notebooks
+*.ipynb
+notebooks/
+
+# Media
+media/
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Other containers
+containers/*
+!containers/teleoperate_mqtt/
+
+# Configs (except the one we need)
+*.yaml
+!lerobot-edge/local_configurations.yaml
